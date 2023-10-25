@@ -13,12 +13,7 @@ if (getComputerChoice === 1) {
 console.log(`computer: ${computerSign}`);
 
 // let the user chose a sign
-let userSelect = +prompt("Enter a number: \n 1 = rock\n 2 = scissors\n 3 = paper");
-
-if (!(userSelect === 1 || userSelect === 2 || userSelect === 3)) {
-  alert("Wrong input!");
-  console.log("Try again"); 
-}
+let userSelect = prompt("Enter a number: \n 1 = rock\n 2 = scissors\n 3 = paper");
 
 // assign users number to a sign
 let userSign = "";
@@ -28,6 +23,8 @@ if (userSelect === 1) {
   userSign = "scissors";
 } else if (userSelect === 3) {
   userSign = "paper";
+} else {
+  userSign = userSelect
 }
 console.log(`You: ${userSign}`);
 
@@ -38,8 +35,12 @@ if (computerSign === userSign) {
 } else {
   if ((computerSign === "rock" && userSign === "scissors") || (computerSign === "scissors" && userSign === "paper") || (computerSign === "paper" && userSign === "rock")) {
     result = "Computer Wins";
-  } else {
+  } else if ((computerSign === "scissors" && userSign === "rock") || (computerSign === "paper" && userSign === "scissors") || (computerSign === "rock" && userSign === "paper")){
     result = "You Win!"
+  } else {
+    result = "Wrong Input \n Try Again"
   }
+
 }
 console.log(result);
+
